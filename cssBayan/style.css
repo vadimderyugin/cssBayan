@@ -184,8 +184,15 @@ body {
 		font-weight: 700;
 	}
 
-	.accordion:hover .accordion__item-trigger {
-		color: blueviolet;
+	.accordion__item:active svg rect{
+		fill: black;
+	}
+	.accordion__item:active svg path{
+		fill: black;
+	}
+
+	.accordion__item-trigger {
+		color: black;
 	}
 
 	.accordion__text {
@@ -195,6 +202,12 @@ body {
 
 	.accordion__item-kross {
 		opacity: 1;
+		right: 0.5rem;
+		top: 0.6rem;
+	}
+
+	.accordion__item:active .accordion__item-trigger {
+		color: black;
 	}
 
 }
