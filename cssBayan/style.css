@@ -5,6 +5,7 @@
 }
 
 body {
+	font-family: 'Genos', sans-serif;
 	padding: 0;
 	margin: 0 auto;
 	max-width: 1000px;
@@ -27,7 +28,7 @@ body {
 	text-align: center;
 	font-size: 3rem;
 	font-weight: 700;
-	color: darkgoldenrod;
+	color: black;
 }
 
 .accordion__item {
@@ -44,18 +45,17 @@ body {
 }
 
 .accordion__item-trigger {
-	position: relative;
 	cursor: pointer;
 	display: block;
 	padding: 1rem;
-	border-bottom: 0.1rem solid black;
-	color: darkgoldenrod;
+	border-bottom: 0.2rem solid black;
+	color: black;
 	transition: all 0.4s;
 }
 
 
 .accordion:hover .accordion__item-trigger {
-	color: red;
+	color: blueviolet;
 }
 
 .accordion__item-kross {
@@ -63,6 +63,7 @@ body {
 	right: 0;
 	top: 1rem;
 	transition: all 0.6s;
+	opacity: 0;
 }
 
 .accordion__item-content {
@@ -73,51 +74,91 @@ body {
 	max-width: 100%;
 	opacity: 0;
 	height: 0;
-	transform: scaleY(50%);
 	transition: all 0.6s ease;
 }
 
+
+
 .accordion__item-content img {
+	width: 0%;
+	transition: 0.5s;
+}
+
+/*================================:Hover*/
+.accordion:hover .accordion__item-kross {
+	opacity: 1;
+}
+
+.accordion__item-trigger:hover~.accordion__item-content {
+	justify-content: center;
+	opacity: 1;
+	height: auto;
+	padding: 1rem;
+	transition: all 0.4s;
+}
+
+.accordion__item:hover .accordion__item-kross {
+	transform: rotate(45deg);
+}
+
+.accordion__item-trigger:hover~.accordion__item-content img {
 	width: 40%;
 }
 
-.accordion__item-input:hover~.accordion__item-content {
-	justify-content: center;
-	transform: scaleY(100%);
-	opacity: 1;
-	height: auto;
-	padding: 1rem;
-	transition: all 0.4s;
-}
 .accordion__item-content:hover {
 	justify-content: center;
-	transform: scaleY(100%);
 	opacity: 1;
 	height: auto;
 	padding: 1rem;
 	transition: all 0.4s;
 }
+
+.accordion__item-content:hover img {
+	width: 40%;
+}
+
+
+
+.accordion__item-content:active~.accordion__item-input:checked {
+	justify-content: center;
+	opacity: 1;
+	height: auto;
+	padding: 1rem;
+	transition: all 0.4s;
+}
+
+
+/*================================:checked*/
 
 .accordion__item-input:checked~.accordion__item-content {
 	justify-content: center;
-	transform: scaleY(100%);
 	opacity: 1;
 	height: auto;
 	padding: 1rem;
 }
 
-.accordion__item-content:active {
+.accordion__item-input:checked~.accordion__item-content img {
+	width: 40%;
 }
 
 .accordion__item-input:checked~.accordion__item-trigger {
-	color: red;
+	color: blueviolet;
 	transition: all 0.6s;
+	border-bottom: 0.2rem solid blueviolet;
 }
 
 .accordion__item-input:checked~.accordion__item-kross {
 	transform: rotate(45deg);
 }
 
+.accordion__item-content:active~.accordion__item-input:checked {
+	justify-content: center;
+	opacity: 1;
+	height: auto;
+	padding: 1rem;
+}
+
+/*==================================Media*/
 
 @media (max-width:820px) {
 	body {
@@ -125,9 +166,19 @@ body {
 		font-weight: 700;
 	}
 
+	.accordion:hover .accordion__item-trigger {
+		color: black;
+		border-bottom: 0.2rem solid black;
+
+	}
+
 	.accordion__text {
 		font-size: 2rem;
 		font-weight: 700;
+	}
+
+	.accordion__item-kross {
+		opacity: 1;
 	}
 
 }
