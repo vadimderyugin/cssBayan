@@ -1,0 +1,146 @@
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0;
+	margin: 0 auto;
+	max-width: 1000px;
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.wrapper {
+	margin: 0;
+	padding: 0 1rem;
+}
+
+.accordion {
+	cursor: pointer;
+	overflow: hidden;
+}
+
+
+.accordion__text {
+	text-align: center;
+	font-size: 3rem;
+	font-weight: 700;
+	color: darkgoldenrod;
+}
+
+.accordion__item {
+	position: relative;
+	margin-bottom: 1rem;
+}
+
+
+.accordion__item-input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+
+.accordion__item-trigger {
+	position: relative;
+	cursor: pointer;
+	display: block;
+	padding: 1rem;
+	border-bottom: 0.1rem solid black;
+	color: darkgoldenrod;
+	transition: all 0.4s;
+}
+
+
+.accordion:hover .accordion__item-trigger {
+	color: red;
+}
+
+.accordion__item-kross {
+	position: absolute;
+	right: 0;
+	top: 1rem;
+	transition: all 0.6s;
+}
+
+.accordion__item-content {
+	cursor: pointer;
+	border-top: none;
+	padding: 0;
+	display: flex;
+	max-width: 100%;
+	opacity: 0;
+	height: 0;
+	transform: scaleY(50%);
+	transition: all 0.6s ease;
+}
+
+.accordion__item-content img {
+	width: 40%;
+}
+
+.accordion__item-input:hover~.accordion__item-content {
+	justify-content: center;
+	transform: scaleY(100%);
+	opacity: 1;
+	height: auto;
+	padding: 1rem;
+	transition: all 0.4s;
+}
+.accordion__item-content:hover {
+	justify-content: center;
+	transform: scaleY(100%);
+	opacity: 1;
+	height: auto;
+	padding: 1rem;
+	transition: all 0.4s;
+}
+
+.accordion__item-input:checked~.accordion__item-content {
+	justify-content: center;
+	transform: scaleY(100%);
+	opacity: 1;
+	height: auto;
+	padding: 1rem;
+}
+
+.accordion__item-content:active {
+}
+
+.accordion__item-input:checked~.accordion__item-trigger {
+	color: red;
+	transition: all 0.6s;
+}
+
+.accordion__item-input:checked~.accordion__item-kross {
+	transform: rotate(45deg);
+}
+
+
+@media (max-width:820px) {
+	body {
+		font-size: 1.5rem;
+		font-weight: 700;
+	}
+
+	.accordion__text {
+		font-size: 2rem;
+		font-weight: 700;
+	}
+
+}
+
+@media (max-width:520px) {
+	body {
+		font-size: 1rem;
+		font-weight: 700;
+	}
+
+	.accordion__text {
+		font-size: 1.3rem;
+		font-weight: 700;
+	}
+
+}
