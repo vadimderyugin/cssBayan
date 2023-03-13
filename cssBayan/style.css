@@ -43,7 +43,6 @@ body {
 
 
 .accordion__item-input {
-	position: absolute;
 	top: 0;
 	left: 0;
 	opacity: 0;
@@ -55,17 +54,22 @@ body {
 	border-bottom: 0.2rem solid black;
 	color: blueviolet;
 	transition: all 0.4s;
+	width: 100%;
+}
+
+.accordion__item-box {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 
-
-
 .accordion__item-kross {
-	position: absolute;
 	right: 0;
 	top: 1rem;
 	transition: all 0.6s;
 	opacity: 0;
+	margin-left: -10rem;
 }
 
 .accordion__item-content {
@@ -76,104 +80,109 @@ body {
 	max-width: 100%;
 	opacity: 0;
 	height: 0;
-	transition: all 0.6s ease;
 }
-
-
 
 .accordion__item-content img {
-	width: 0%;
-	transition: 0.5s;
+	width: 0;
+	transition:  0.5s ease-out;
 }
-
 /*================================:Hover*/
 
+@media (hover:hover) {
+	.accordion:hover .accordion__item-kross {
+		opacity: 1;
+		transition: all 0.4s;
+	}
+
+	.accordion__item-box:hover~.accordion__item-content {
+		justify-content: center;
+		opacity: 1;
+		height: auto;
+		padding: 1rem;
+	}
+
+	.accordion__item:hover .accordion__item-kross {
+		transform: rotate(-45deg);
+	}
+
+	.accordion__item-box:hover~.accordion__item-content img {
+		width: 40%;
+		transition: 0.5s ease-out;
+	}
+
+	.accordion__item-content:hover img {
+		width: 40%;
+		transition: 0.5s ease-out;
+	}
+
+	.accordion__item-content:not(:hover) img {
+		width: 0;
+		transition: 0.5s ease-out;
+	}
 
 
-.accordion:hover .accordion__item-kross {
-	opacity: 1;
-}
+	.accordion__item-content:hover {
+		justify-content: center;
+		opacity: 1;
+		height: auto;
+		padding: 1rem;
+	}
 
-.accordion__item-trigger:hover~.accordion__item-content {
-	justify-content: center;
-	opacity: 1;
-	height: auto;
-	padding: 1rem;
-	transition: all 0.4s;
-}
-
-.accordion__item:hover .accordion__item-kross {
-	transform: rotate(45deg);
-}
-
-.accordion__item-trigger:hover~.accordion__item-content img {
-	width: 40%;
-}
-
-.accordion__item-content:hover {
-	justify-content: center;
-	opacity: 1;
-	height: auto;
-	padding: 1rem;
-	transition: all 0.4s;
-}
-
-.accordion__item-content:hover img {
-	width: 40%;
-}
+	.accordion:hover .accordion__item-trigger {
+		color: black;
+	}
 
 
+	/*================================:checked*/
+	.accordion__item-content:active~.accordion__item-input:checked {
+		justify-content: center;
+		opacity: 1;
+		height: auto;
+		padding: 1rem;
+	}
 
-.accordion__item-content:active~.accordion__item-input:checked {
-	justify-content: center;
-	opacity: 1;
-	height: auto;
-	padding: 1rem;
-	transition: all 0.4s;
-}
+	.accordion__item-input:checked~.accordion__item-content {
+		justify-content: center;
+		opacity: 1;
+		height: auto;
+		padding: 1rem;
+	}
 
-.accordion:hover .accordion__item-trigger {
-	color: black;
-}
+	.accordion__item-input:checked~.accordion__item-content img {
+		width: 40%;
+		transition: 0.5 ease-out;
+	}
 
-/*================================:checked*/
+	.accordion__item-input:checked~.accordion__item-box .accordion__item-trigger {
+		color: black;
+	}
 
-.accordion__item-input:checked~.accordion__item-content {
-	justify-content: center;
-	opacity: 1;
-	height: auto;
-	padding: 1rem;
-}
+	.accordion__item-input:checked~.accordion__item-kross {
+		transform: rotate(45deg);
+	}
 
-.accordion__item-input:checked~.accordion__item-content img {
-	width: 40%;
-}
+	.accordion__item-content:active~.accordion__item-input:checked {
+		justify-content: center;
+		opacity: 1;
+		height: auto;
+		padding: 1rem;
+	}
+	.accordion__item:active {
+		background-color: #fff;
+		opacity: 0.6;
+	}
 
-.accordion__item-input:checked~.accordion__item-trigger {
-	color: black;
-	transition: all 0.6s;
-}
+	.accordion__item:active .accordion__item-box .accordion__item-trigger {
+		color: blueviolet;
+	}
 
-.accordion__item-input:checked~.accordion__item-kross {
-	transform: rotate(45deg);
-}
+	.accordion__item:active svg rect {
+		fill: blueviolet;
+	}
 
-.accordion__item-content:active~.accordion__item-input:checked {
-	justify-content: center;
-	opacity: 1;
-	height: auto;
-	padding: 1rem;
-}
-
-.accordion__item:active .accordion__item-trigger {
-	color: blueviolet;
-}
-
-.accordion__item:active svg rect{
-	fill: blueviolet;
-}
-.accordion__item:active svg path{
-	fill: blueviolet;
+	.accordion__item:active svg path {
+		fill: blueviolet;
+	}
 }
 
 /*==================================Media*/
@@ -184,10 +193,11 @@ body {
 		font-weight: 700;
 	}
 
-	.accordion__item:active svg rect{
+	.accordion__item:active svg rect {
 		fill: black;
 	}
-	.accordion__item:active svg path{
+
+	.accordion__item:active svg path {
 		fill: black;
 	}
 
